@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import {Button, Input , FormControl, InputLabel} from '@material-ui/core'
+import {Button, Input , FormControl, InputLabel, IconButton} from '@material-ui/core'
 import Message from './Message'
 import db from './firebase';
 import firebase from 'firebase'
 import FlipMove from 'react-flip-move'
+import SendIcon from '@material-ui/icons/Send';
 
 function App() {
 const [input, setInput] = useState('');
@@ -41,16 +42,24 @@ const sendMessage = (event) => {
 
   return (
     <div className="App">
-      <h1>Hello World 🌍🚀</h1>
+      <h1>🚀🌍Hello World Let's Chat!🌍🚀</h1>
       <h2>Welcome {username}</h2>
 
-      <form>
-      <FormControl>
-      <InputLabel >Enter a Message...</InputLabel>
-      <Input value={input} 
+      <form className="app_form">
+      <FormControl className="app_formControl">
+      <Input className="app_input" placeholder='Enter a Message...' value={input} 
       onChange={event => setInput(event.target.value)} /> 
       {/* initial value is empty and must be set to change it */}
-      <Button disabled={!input} variant="contained" color="primary" type="submit" onClick={sendMessage}>Send Message</Button>
+      
+      <IconButton
+       className="app_iconButton"
+       disabled={!input} 
+       variant="contained" 
+       color="primary" 
+       type="submit" 
+       onClick={sendMessage} 
+      > <SendIcon /> </IconButton>
+
       </FormControl>
     
       </form>
